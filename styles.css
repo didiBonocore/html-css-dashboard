@@ -15,6 +15,8 @@
   --lenght-md3: 1.5rem;
 }
 
+/* Reset */
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -27,8 +29,10 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
+/* Shared Components */
+
 .container {
-  padding: 1rem;
+  padding: var(--lenght-md1);
 }
 
 @media only screen and (min-width: 768px) {
@@ -40,16 +44,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .row {
   display: flex;
-  gap: 1rem;
+  gap: var(--lenght-md1);
+  margin-bottom: var(--lenght-md1);
 }
 
 .card {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 1rem;
+  flex-grow: 1;
+  padding: var(--lenght-md1);
   background: var(--color-card);
-  border-radius: 1rem;
+  border-radius: var(--lenght-md1);
+}
+
+.card.has-extra-padding {
+  padding: 2rem 1rem;
 }
 
 .card-h4 {
@@ -59,12 +66,56 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-label);
 }
 
-.card-h2 {
-  font-size: 2rem;
+.card-h3 {
+  margin-bottom: var(--lenght-md1);
+  color: var(--color-label);
+  font-size: var(--lenght-md1);
   font-weight: 500;
 }
 
-.card-icon {
+.card-h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.card-h2.has-bottom-margin {
+  margin-bottom: 2rem;
+}
+
+.card-bar-chart {
+  display: flex;
+  justify-content: space-evenly;
+  gap: var(--lenght-md1);
+  align-items: flex-end;
+  height: 8rem;
+  background: repeating-linear-gradient(
+    rgba(255, 255, 255, 0.075) 0% 0.5%,
+    transparent 0.5% 20%
+  );
+}
+
+.card-bar-chart > div {
+  display: grid;
+  place-items: end;
+}
+
+.card-bar-chart > div > div {
+  width: var(--lenght-md2);
+}
+
+.card-bar-primary {
+  background: var(--color-primary);
+}
+
+.card-bar-default {
+  background: var(--color-default);
+}
+
+/* Bespoke Card Styles */
+
+/* Card Headline */
+
+.card-headline-icon {
   display: grid;
   place-items: center;
   width: 3.5rem;
@@ -77,11 +128,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-healine {
   width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
+
+/* Card List */
 
 .card-list {
   display: flex;
-  justify-content: center;
   gap: 1.75rem;
   width: 50%;
 }
@@ -89,14 +144,13 @@ h1, h2, h3, h4, h5, h6 {
 .card-list-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .card-list-badge {
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 50%;
-  background: var(--color-primary);
 }
 
 .card-list-badge.primary {
@@ -108,5 +162,55 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card-list-badge.default {
-  background: var(--color-background);
+  background: var(--color-default);
+}
+
+/* Card Progress */
+
+.card-progress {
+  width: 25%;
+  text-align: center;
+}
+
+.card-progress-donut {
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--color-primary) 0% 33%, 
+    var(--color-default) 33% 100%
+  );
+}
+
+.card-progress-donut::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 85%;
+  border-radius: inherit;
+  background: var(--color-card);
+}
+
+/*  Growth Card */
+
+.card-growth {
+  width: 50%;
+  text-align: center;
+}
+
+.card-growth-headlines {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* Region Card */
+
+.card-region {
+  width: 25%;
+  text-align: center;
 }
